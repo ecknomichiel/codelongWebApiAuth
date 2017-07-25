@@ -3,22 +3,36 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
-<div class="row">
+<div class="row" ng-app="authApp" ng-controller="authController">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <h2>Register</h2>
+        <label>Email</label>
+        <input type="text" class="form-control" ng-model="register.Email" />
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model="register.Password" />
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" ng-model="register.ConfirmPassword" />
+        <button ng-click="RequestRegister()">Register!</button>
+        {{result}}
     </div>
+
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <h2>Login</h2>
+        <label>Email</label>
+        <input type="text" class="form-control" ng-model="login.Email" />
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model="login.Password" />
+        <button ng-click="RequestLogin()">Login!</button>
+        {{user}}
     </div>
+
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        <h2>Request Data</h2>
+        <label>Data</label>
+        <input type="text" class="form-control" ng-model="data" />
+        <label>Logged in user</label>
+        <input type="text" class="form-control" ng-model="user" />
+        <button ng-click="RequestData()">Get data!</button>
     </div>
 </div>
+
