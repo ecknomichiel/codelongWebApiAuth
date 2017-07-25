@@ -45,12 +45,16 @@
                 );
         };
 
-        $scope.RequestData = function () {
+        $scope.RequestData = GetValues;
+            /*
+            function () {
             var token = $window.sessionStorage.getItem('tokenKey');
+            
             var headers = {};
             if (token) {
                 headers.Authorization = 'Bearer ' + token;
             };
+            alert(config.headers.Authorization);
             var config = { headers: headers };
             $http.get('api/Values', config).then(
                 function (response) {
@@ -61,16 +65,42 @@
                     alert("Fail!");
                 }
                 );
-        };
+        };*/
+
+        function GetValues() {
+            var token = $window.sessionStorage.getItem('tokenKey');
+            var headers = {};
+            if (token) {
+                headers.Authorization = 'Bearer ' + token;
+            }
+            var config = { headers: headers }
+            $http.get('api/Values', config)
+            .then(
+                function SuccessCallback(response) {
+                    //this callback will be called asynchronously when the response is available
+                    $scope.data = response.data;
+                }
+            )
+        }
 
         $scope.AddPost = function () {
-            $http.post("/api/Account/Register", $scope.register).then(function successCallback(response) {
+            var token = $window.sessionStorage.getItem('tokenKey');
+            var req = {
+                method: 'POST',
+                url: 'api/Posts',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                data: $scope.currentPost
+            }
+           
+            $http.(req).then(function (response) {
                 //This callback will be called asynchonously when the result is available
-                $scope.result = "Registration was successful";
+                alert("Success");
             },
-            function errorCallback(err) {
+            function errorCallback(response) {
                 //This callback will be called asynchonously when the result is available
-                $scope.result = err.status + err.err.statustext;
+                alert("Fail");
             });
         };
     };

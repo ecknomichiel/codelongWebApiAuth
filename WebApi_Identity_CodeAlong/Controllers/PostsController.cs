@@ -8,6 +8,7 @@ using WebApi_Identity_CodeAlong.Models;
 
 namespace WebApi_Identity_CodeAlong.Controllers
 {
+    [Authorize]
     public class PostsController : ApiController
     {
         static List<Post> posts = new List<Post>();

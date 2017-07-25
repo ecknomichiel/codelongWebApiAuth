@@ -31,18 +31,18 @@
     <div class="col-md-4">
         <h2>Request Data</h2>
         <label>Data</label>
-        <input type="text" class="form-control" ng-model="actualPost.title" />
+        <input type="text" class="form-control" ng-model="data" />
         <label>Logged in user</label>
-        <input type="text" class="form-control" ng-model="actualPost.content" />
+        <input type="text" class="form-control" ng-model="login.Email" />
         <button ng-click="RequestData()">Get data!</button>
     </div>
 
     <div class="col-md-4">
         <h2>Post</h2>
         <label>Title</label>
-        <input type="text" class="form-control" ng-model="actualPost.title" />
+        <input type="text" class="form-control" ng-model="currentPost.title" />
         <label>Content</label>
-        <input type="text" class="form-control" ng-model="actualPost.content" />
+        <input type="text" class="form-control" ng-model="currentPost.content" />
         <button ng-click="AddPost()">Add</button>
     </div>
 
