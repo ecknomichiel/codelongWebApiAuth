@@ -62,6 +62,17 @@
                 }
                 );
         };
+
+        $scope.AddPost = function () {
+            $http.post("/api/Account/Register", $scope.register).then(function successCallback(response) {
+                //This callback will be called asynchonously when the result is available
+                $scope.result = "Registration was successful";
+            },
+            function errorCallback(err) {
+                //This callback will be called asynchonously when the result is available
+                $scope.result = err.status + err.err.statustext;
+            });
+        };
     };
 
     app.controller("authController", ["$scope", "$http", "$window", authController]);
