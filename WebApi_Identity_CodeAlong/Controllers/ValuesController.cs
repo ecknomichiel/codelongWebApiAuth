@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
+
 
 namespace WebApi_Identity_CodeAlong.Controllers
 {
@@ -13,7 +15,10 @@ namespace WebApi_Identity_CodeAlong.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            string user = User.Identity.Name;
+            string id1 = User.Identity.GetUserId();
+            string id2 = RequestContext.Principal.Identity.GetUserId();
+            return new string[] { user, id1, id2, "value1", "value2" };
         }
 
         // GET api/values/5
